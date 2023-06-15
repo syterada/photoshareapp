@@ -1,0 +1,45 @@
+<!doctype html>
+
+<head>
+  <link rel="stylesheet" href="../static/css/main.css">
+</head>
+
+{% if message %}
+    <h2>{{message}}</h2>
+{% endif %}
+
+{% if user %}
+    <h2>{{user[0][0]}} {{user[0][1]}}</h2>
+    <div id="friendbutton">
+        <form action="/user/{{uid}}" method="post" id="friendbutton">
+            <button type="submit" type="button">Add Friend</button>
+        </form><br>
+    </div>
+{% endif %}
+
+{% if albums %}
+<h2>Here are {{user[0]}}'s Albums:</h2>
+    <ul>
+    {% for album in albums %}
+        <li><a href='/album/{{album[0]}}'>{{album[2]}}</a><br></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if friends %}
+<h2>Here are {{user[0]}}'s Friends:</h2>
+    <ul>
+    {% for friend in friends %}
+        <li><a href='/user/{{friend[1]}}'>{{friend[2]}} {{friend[3]}}</a><br></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if tags %}
+<h2>Here are {{user[0]}}'s Tags:</h2>
+    <ul>
+    {% for tag in tags %}
+        <li><a href='/tag/{{tag[0]}}'>{{tag[1]}}</a><br></li>
+    {% endfor %}
+    </ul>
+{% endif %}

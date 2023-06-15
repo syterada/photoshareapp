@@ -1,0 +1,37 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+<head>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <title>Upload a photo!</title>
+</head>
+    <body>
+        <div class="title">
+            <h1>Upload a photo to Photoshare</h1>
+        </div>
+        {% if message %}
+            <p>{{message}}</p>
+        {% endif %}
+            <form method="post" enctype="multipart/form-data" action="/upload">
+                <label for="photo">Select photo:</label>
+                <input type="file" name="photo" required='true' /><br />
+                <label for="caption">Please caption:</label>
+                <input type="text" name="caption" required='true' /><br />
+                <label for="tags">Add tags:</label>
+                <input type="text" name="tags"  /><br />
+                <label for="newa">New Album Name:</label>
+                <input type="text" name="newa" /><br />
+
+                <p>OR:</p><br />
+
+                <label for="oldalbum">Choose Existing Album:</label>
+                    <select name="oldalbum">
+                    <option value="0">Create New Album</option>
+                    {% for old in oldalbums %}
+                        <option value="{{old[0]}}">{{old[1]}}</option>
+                    {% endfor %}
+                    </select>
+
+                <input type="submit" value="Upload" />
+            </form>
+
+
+    </body>

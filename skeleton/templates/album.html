@@ -1,0 +1,26 @@
+<!doctype html>
+
+<head>
+  <link rel="stylesheet" href="../static/css/main.css">
+</head>
+
+{% if message %}
+    <h2>{{message}}</h2>
+{% endif %}
+
+{% if photos %}
+<h1>{{photos[0][7]}}</h1>
+<h3><i>Created by {{albumowner[0]}} on {{photos[0][6]}}</i></h3>
+<div id="deletebutton">
+  <form action="/album/{{photos[0][5]}}" method="post" id="deletebutton">
+      <button type="submit" type="button">Delete Album</button>
+  </form><br>
+</div>
+    <ul>
+    {% for photo in photos %}
+        <li>{{photo[1]}}<br>
+        <a href='/photo/{{photo[0]}}'><img src='data:image/jpg;base64, {{ base64.b64encode(photo[2]).decode("ascii") }}'/></a><br>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

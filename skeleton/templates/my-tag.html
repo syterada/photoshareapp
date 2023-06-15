@@ -1,0 +1,17 @@
+<!doctype html>
+
+<head>
+  <link rel="stylesheet" href="../static/css/main.css">
+</head>
+<h2>{{descript[0][0]}}</h2>
+
+
+{% if photos %}
+    <ul>
+    {% for photo in photos %}
+        <li>{{photo[1]}}<br>
+        <a href='/photo/{{photo[0]}}'><img src='data:image/jpg;base64, {{ base64.b64encode(photo[2]).decode("ascii") }}'/></a><br>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

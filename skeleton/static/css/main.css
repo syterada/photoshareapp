@@ -1,0 +1,82 @@
+body {
+    background-color: rgb(136, 237, 255);  
+	font-family: "Verdana", "Lucida Sans", "Comic Sans MS", serif;
+    color: rgb(1, 12, 109);
+    
+}
+
+h1 {
+    font-size: 30px;
+    color: rgb(194, 29, 29);
+    font-style: italic;
+    font-weight: bold;
+}
+
+img {  
+    width: 500px;  
+    height: auto;  
+    background-color: rgb(48, 223, 254);
+    padding: 10px;
+}  
+
+#likebutton {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(136, 237, 255);  
+}
+
+#commentsection {
+    background-color: rgb(222, 238, 254);
+    width: 700px;
+    height: auto;
+    position: absolute;
+    left: 540px;
+    top: 118px;   
+}
+
+#numberlikes {
+    position: relative;
+    left: 75px;
+    top: -50px;
+}
+
+#tag {
+    position: relative;
+    top: 15px;
+    width: 1240px;
+    background-color: rgb(249, 221, 255);
+}
+
+#likedby {
+    position: relative;
+    top: 15px;
+    background-color: rgb(157, 160, 255);
+    width: 1240px;
+}
+
+#topusers {
+    width: 1240px;
+    background-color: rgb(157, 160, 255);
+}
+
+#toptags {
+    width: 1240px;
+    background-color: rgb(249, 221, 255);
+}
+
+#mainnavigation {
+    width: 1240px;
+    background-color: #FFFFFFFF;
+}
+
+#navigation {
+    position: relative;
+    top: 125px;
+    width: 1240px;
+    background-color: #FFFFFFFF;
+}
+
+a:visited {color: rgb(120, 25, 25);}
+a:link    {color:rgb(255, 17, 17); font-size: 90%; }
+a:hover   {color:#ece828; text-decoration:underline; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;}
+a:active  {color:#00FF00; text-decoration:underline; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;}

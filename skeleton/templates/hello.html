@@ -1,0 +1,77 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+<!doctype html>
+
+<head>
+  <link rel="stylesheet" href="../static/css/main.css">
+</head>
+
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<title>Photoshare</title>
+{% if user %}
+  <h1>Hello {{ user[0][0] }} {{ user[0][1] }}!</h1>
+{% endif %}
+
+{% if photos %}
+<h2>Here are the photos you've posted</h2>
+    <ul>
+    {% for photo in photos %}
+
+        <li>{{photo[2]}}<br>
+        <a href="/photo/{{photo[1]}}"><img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if albums %}
+<h2>Here are the albums you've created</h2>
+    <ul>
+    {% for album in albums %}
+      <li><a href='/album/{{album[0]}}'>{{album[2]}}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if tags %}
+<h2>Here are the tags you've created</h2>
+    <ul>
+    {% for tag in tags %}
+      <li><a href='/tag/{{tag[0]}}'>{{tag[1]}}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if friends %}
+<h2>This is your list of Friends:</h2>
+    <ul>
+    {% for friend in friends %}
+        <li><a href='/user/{{friend[1]}}'>{{friend[2]}} {{friend[3]}}</a><br></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if friendrecs %}
+<h2>These are some friend recommendations:</h2>
+    <ul>
+    {% for friendrec in friendrecs %}
+        <li><a href='/user/{{friendrec[1]}}'>{{friendrec[2]}} {{friendrec[3]}}</a><br></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+
+
+
+{% if message is none %}
+  <p>You should <a href='/login'>login!</a></p>
+{% else %}
+  <p> Go to <a href='/profile'>profile?</a></p>
+{% endif %}
+
+<ul>
+<li><a href='/upload'>Upload a photo</a> </li>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>

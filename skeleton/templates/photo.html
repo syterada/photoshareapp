@@ -1,0 +1,65 @@
+<!doctype html>
+
+<head>
+  <link rel="stylesheet" href="../static/css/main.css">
+</head>
+
+{% if errormessage %}
+    <h2>{{errormessage}}</h2>
+{% endif %}
+
+{% if photos %}
+<h1>{{photos[0][2]}}</h1>
+<div id="deletebutton">
+    <form action="/photo/{{photos[0][1]}}" method="post" id="deletebutton">
+        <button type="submit" name="deletebutton" type="button">Delete Photo</button>
+    </form><br>
+  </div>
+    <img src='data:image/jpg;base64, {{ base64.b64encode(photos[0][0]).decode("ascii") }}'/><br>
+    
+    <div id="likebutton">
+        <form action="/photo/{{photos[0][1]}}" method="post" id="likebutton">
+            <button type="submit" name="likebutton" type="button"><img src='https://cdn.pixabay.com/photo/2016/02/04/11/57/heart-1179054__480.png' id="likebutton"></button>
+        </form><br>
+        <h2>{{numlikes}}</h2><br>
+    
+    
+        <p><i>Liked By:</i></p>
+        <ul>
+            {% for like in likes %}
+                <li>{{like[2]}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div id="commentsection">
+        <h2>Comments</h2>
+        {% if comments %}
+        <ul>
+            {% for comment in comments %}
+                <li>"{{comment[3]}}" -<i>{{comment[5]}} on {{comment[2]}}</i></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form method="post" action="/photo/{{photos[0][1]}}">
+            <label for="comment">Add Comment:</label>
+            <input type="text" name="comment" required='true' />
+
+            <input type="submit" value="Upload" />
+        </form>
+
+    </div>
+
+    <div id="tags">
+        <h2>Tags</h2>
+        {% if tags %}
+        <ul>
+        {% for tag in tags %}
+            <li><a href='/tag/{{tag[0]}}'>{{tag[1]}}</a><br></li>
+        {% endfor %}
+     </ul>
+{% endif %}
+    </div>
+{% endif %}
+
